@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "77444028008",
+    "project_id": "emoussa-7ab10",
+    "storage_bucket": "emoussa-7ab10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77444028008:android:b5155bea3f8df07f458ddd",
+        "android_client_info": {
+          "package_name": "com.example.youtube_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHqyGXm0pXO-wDbg4G8qHsXBjrNOmER0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

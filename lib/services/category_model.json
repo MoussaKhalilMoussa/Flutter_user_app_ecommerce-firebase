@@ -1,0 +1,95 @@
+{
+    "categories":[
+        {
+            "name":"Women Dress",
+            "subcategory":[
+                "Wedding & Events",
+                "Top & sets",
+                "Watches"
+            ]
+        },
+        {
+            "name":"Men Clothing & Fashion",
+            "subcategory":[
+                "OutWear & Jackets",
+                "Formal Dress",
+                "Accessories"
+            ]
+        },
+        {
+            "name":"Computer & Accessories",
+            "subcategory":[
+                "Laptop",
+                "Gamming Pc",
+                "Official Equipment"
+            ]
+        },
+        {
+            "name":"Automobile",
+            "subcategory":[
+                "Cars",
+                "Bikes"
+            ]
+        },
+        {
+            "name":"Kids & Toys",
+            "subcategory":[
+                "Shoes & Bags",
+                "Baby Clothing",
+                "Girls Toys"
+            ]
+        },
+        {
+            "name":"Jewelery",
+            "subcategory":[
+                "Necklace",
+                "Gold",
+                "Earing"
+            ]
+        },
+        {
+            "name":"Cellphone & Tab",
+            "subcategory":[
+                "SmartPhone",
+                "Tablets",
+                "Accessories"
+            ]
+        },
+        {
+            "name":"Furniture",
+            "subcategory":[
+                "Sofa",
+                "Bed",
+                "Home Textile"
+            ]
+        },
+        {
+            "name":"Farming",
+            "subcategory":[
+                "Penaut",
+                "Cacaot"
+            ]
+        },
+        {
+            "name":"Engineering",
+            "subcategory":[
+                "Electric Eng",
+                "Computer Eng",
+                "Mechanical Eng"
+
+            ]
+        },
+        {
+            "name":"Sports",
+            "subcategory":[
+                "Foot Ball",
+                "Basket Ball",
+                "HandBall",
+                "Tenis Table",
+                "Cycling",
+                "Sneakers",
+                "SWimming"
+            ]
+        }
+    ]
+}
