@@ -62,4 +62,12 @@ const video = "Video",
 
 // profile strings
 
-const wishlist = "My Wishlist", orders = "My Orders", message = " Messages" , oldpass = "Old Password" , newpass = "New Password";
+const wishlist = "My Wishlist",
+    orders = "My Orders",
+    message = " Messages",
+    oldpass = "Old Password",
+    newpass = "New Password";
+
+//payment methods string
+
+const paypal = "Paypal", stripe = "Stripe", cod = "Cash on delivery";

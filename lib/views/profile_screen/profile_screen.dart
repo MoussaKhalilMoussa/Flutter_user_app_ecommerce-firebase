@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -9,9 +8,13 @@ import 'package:youtube_ecommerce/controllers/auth_controller.dart';
 import 'package:youtube_ecommerce/controllers/profile_controller.dart';
 import 'package:youtube_ecommerce/services/firestore_services.dart';
 import 'package:youtube_ecommerce/views/auth_screen/login_screen.dart';
+import 'package:youtube_ecommerce/views/chat_screen/messaging_screen.dart';
+import 'package:youtube_ecommerce/views/orders_screen/order_screen.dart';
 import 'package:youtube_ecommerce/views/profile_screen/components/details_cart.dart';
 import 'package:youtube_ecommerce/views/profile_screen/edit_profile_screen.dart';
+import 'package:youtube_ecommerce/views/wishlist_screen/wishlist_screen.dart';
 import 'package:youtube_ecommerce/widgets_common/bgWidget.dart';
+import 'package:youtube_ecommerce/widgets_common/loading_indicator_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -19,6 +22,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+    //FirestoreServices.getCounts();
 
     return bgWidget(
         child: Scaffold(
@@ -33,7 +37,6 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     );
                   } else {
-
                     var data = snapshot.data!.docs[0];
 
                     return SafeArea(
@@ -49,7 +52,6 @@ class ProfileScreen extends StatelessWidget {
                                   color: whiteColor,
                                 )).onTap(() {
                               controller.nameController.text = data['name'];
-
                               Get.to(() => EditProfileScreen(
                                     data: data,
                                   ));
@@ -110,23 +112,54 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           20.heightBox,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              detailsCard(
-                                  count: data['cart_count'],
-                                  title: "in your cart",
-                                  width: context.screenWidth / 3.4),
-                              detailsCard(
-                                  count: data['wishlist_count'],
-                                  title: "in your wishlist",
-                                  width: context.screenWidth / 3.4),
-                              detailsCard(
-                                  count: data['order_count'],
-                                  title: "your orders",
-                                  width: context.screenWidth / 3.4),
-                            ],
-                          ),
+
+                          FutureBuilder(
+                              future: FirestoreServices.getCounts(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot snapshot) {
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: loadingIndicator(),
+                                  );
+                                } else {
+                                  var countData = snapshot.data;
+                                  return Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      detailsCard(
+                                          count: countData[0].toString(),
+                                          title: "in your cart",
+                                          width: context.screenWidth / 3.4),
+                                      detailsCard(
+                                          count: countData[1].toString(),
+                                          title: "in your wishlist",
+                                          width: context.screenWidth / 3.4),
+                                      detailsCard(
+                                          count: countData[2].toString(),
+                                          title: "your orders",
+                                          width: context.screenWidth / 3.4),
+                                    ],
+                                  );
+                                }
+                              }),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: [
+                          //     detailsCard(
+                          //         count: data['cart_count'],
+                          //         title: "in your cart",
+                          //         width: context.screenWidth / 3.4),
+                          //     detailsCard(
+                          //         count: data['wishlist_count'],
+                          //         title: "in your wishlist",
+                          //         width: context.screenWidth / 3.4),
+                          //     detailsCard(
+                          //         count: data['order_count'],
+                          //         title: "your orders",
+                          //         width: context.screenWidth / 3.4),
+                          //   ],
+                          // ),
                           //buttons section
 
                           ListView.separated(
@@ -139,6 +172,19 @@ class ProfileScreen extends StatelessWidget {
                             },
                             itemBuilder: (BuildContext context, int index) {
                               return ListTile(
+                                onTap: () {
+                                  switch (index) {
+                                    case 0:
+                                      Get.to(() => const OrderScreen());
+                                      break;
+                                    case 1:
+                                      Get.to(() => const WishlistScreen());
+                                      break;
+                                    case 2:
+                                      Get.to(() => const MessagesScreen());
+                                      break;
+                                  }
+                                },
                                 leading: Image.asset(
                                   profileButtonIcon[index],
                                   width: 22,
