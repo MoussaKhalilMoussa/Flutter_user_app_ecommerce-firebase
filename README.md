@@ -1,4 +1,4 @@
-# youtube_ecommerce
+# ecommerce
 
 A new Flutter project.
 
